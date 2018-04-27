@@ -26,7 +26,10 @@ public class Emprestimo {
 	}
 
 	public void setUsuario(Usuario usuario) {
-		this.livro = livro;
+		if (usuario == null) {
+			throw new RuntimeException("Usuário invalido");
+		}
+		this.usuario = usuario;
 	}
 
 	public String getDataEmprestimo() {
@@ -50,7 +53,7 @@ public class Emprestimo {
 	 * se a data estiver no formato valido e false para formato invalido
 	 */
 	public boolean validaData(String data) {
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat df = new SimpleDateFormat("dd/mm/yyyy");
 		df.setLenient(false); //
 		try {
 			df.parse(data); // data válida
